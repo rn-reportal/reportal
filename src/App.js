@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import RootNavigator from '@/navigation';
+import { UserContext } from '@/context';
+import { RootNavigator } from '@/navigation';
+import { strings } from '@/Localization';
 
 const App = () => {
+  const [user, setUser] = useState({
+    lang: '',
+    onboarding: true,
+  });
+
+  const modifyUser = user => {
+    setUser(user);
+  };
+
+  /* Force english as default language */
+  strings.setLanguage('en');
+
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <RootNavigator />
-    </GestureHandlerRootView>
+    <UserContext.Provider value={{ user, modifyUser }}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <RootNavigator />
+      </GestureHandlerRootView>
+    </UserContext.Provider>
   );
 };
 

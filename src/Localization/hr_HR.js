@@ -1,14 +1,14 @@
-export const en = {
+export const hr_HR = {
   common: {
     loading: 'Loading',
     connectionError: 'Connection error',
   },
   onboarding: {
-    greet: 'Latest **News** With Improved **Articles**',
+    greet: 'Najnovije **vijesti** poboljšanih **članaka**',
   },
   home: {
     header: 'Home',
-    message: 'Welcome',
+    message: 'Dobrodošli',
     variant: 'App variant: ',
   },
   login: {

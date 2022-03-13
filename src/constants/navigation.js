@@ -1,4 +1,7 @@
 export const NAVIGATION = {
+  onboarding: {
+    screen: 'Onboarding',
+  },
   home: {
     tab: 'HomeTab',
     screen: 'Home',

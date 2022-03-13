@@ -7,12 +7,10 @@ import { NAVIGATION } from '@/constants';
 
 const Stack = createNativeStackNavigator();
 
-const HomeNavigator = () => {
+export const HomeNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name={NAVIGATION.home.screen} component={Home} />
     </Stack.Navigator>
   );
 };
-
-export default HomeNavigator;
