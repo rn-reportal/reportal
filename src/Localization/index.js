@@ -1,1 +1,1 @@
-export { strings } from '@/Localization/Localization';
+export { strings } from '@/localization/Localization';

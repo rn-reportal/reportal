@@ -1,27 +1,12 @@
 export const hr_HR = {
   common: {
-    loading: 'Loading',
-    connectionError: 'Connection error',
+    loading: 'Učitavanje',
   },
   onboarding: {
     greet: 'Najnovije **vijesti** poboljšanih **članaka**',
+    tagline: 'Ostanite u toku sa svjetskim vijestima',
   },
-  home: {
-    header: 'Home',
-    message: 'Dobrodošli',
-    variant: 'App variant: ',
-  },
-  login: {
-    username: 'Username',
-    usernameHint: 'Enter your username',
-    button: 'Login',
-    password: 'Password',
-    passwordHint: 'Enter your password',
-    invalidCredentials: 'Invalid credentials',
-  },
-  profile: {
-    header: 'Profile',
-    logout: 'Logout',
-    message: 'This screen has the iOS native large header.',
-  },
+  home: {},
+  login: {},
+  profile: {},
 };

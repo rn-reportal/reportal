@@ -6,6 +6,8 @@ export const theme = {
     colors: {
       // @todo: add light theme palette
       primary: '#FEFEFC',
+      secondary: '#1A222F',
+      text: '#BBBBBB',
     },
   },
   dark: {
@@ -14,11 +16,7 @@ export const theme = {
       ...DarkTheme.colors,
       primary: '#1A222F',
       secondary: '#FEFEFC',
-      error: '#D32F2F',
-      text: '#FFFFFF',
-      border: '#FFFFFF',
-      activeTab: '#4FC3F7',
-      inactiveTab: '#FFFFFF',
+      text: '#BBBBBB',
     },
   },
 };

@@ -4,7 +4,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { UserContext } from '@/context';
 import { RootNavigator } from '@/navigation';
-import { strings } from '@/Localization';
+import { strings } from '@/localization';
 
 const App = () => {
   const [user, setUser] = useState({
