@@ -1,4 +1,4 @@
-import { StatusBar } from 'react-native';
+import { StatusBar, ImageBackground, View } from 'react-native';
 import React from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,11 +17,19 @@ export const Onboarding = () => {
         backgroundColor={'transparent'}
       />
       <SafeAreaView style={styles.root}>
-        <Text style={styles.root__tagline}>{strings.onboarding.tagline}</Text>
-        <Text style={[styles.root__greet, typography.text]}>
-          {strings.onboarding.greet}
-        </Text>
-        <OnboardingButton />
+        <ImageBackground
+          source={require('../../assets/images/onboarding_bg.jpg')}
+          style={styles.root__backgroundImage}>
+          <View style={styles.root__contentWrapper}>
+            <Text style={styles.root__tagline}>
+              {strings.onboarding.tagline}
+            </Text>
+            <Text style={[styles.root__greet, typography.text]}>
+              {strings.onboarding.greet}
+            </Text>
+            <OnboardingButton />
+          </View>
+        </ImageBackground>
       </SafeAreaView>
     </>
   );

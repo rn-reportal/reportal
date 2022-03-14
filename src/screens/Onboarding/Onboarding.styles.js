@@ -6,9 +6,20 @@ export const styles = StyleSheet.create({
   root: {
     flex: 1,
     alignItems: 'center',
-    padding: 30,
     paddingTop: 50,
     backgroundColor: theme.dark.colors.primary,
+  },
+  root__backgroundImage: {
+    flex: 1,
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  root__contentWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 30,
   },
   root__tagline: {
     fontSize: 30,
