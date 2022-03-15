@@ -19,7 +19,7 @@ export const Onboarding = () => {
           <View style={styles.root__contentWrapper}>
             <Text
               style={styles.root__tagline}
-              animation={{ entering: FadeIn.duration(500) }}>
+              animation={{ entering: FadeIn.duration(1000) }}>
               {strings.onboarding.tagline}
             </Text>
             <Text

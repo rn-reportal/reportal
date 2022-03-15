@@ -6,6 +6,7 @@ module.exports = {
   plugins: [
     ['module-resolver', { alias, extensions }],
     'react-native-reanimated/plugin',
+    ['module:react-native-dotenv'],
   ],
   env: {
     production: {

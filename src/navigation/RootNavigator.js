@@ -4,7 +4,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { AppNavigator } from '@/navigation';
-import { Loader } from '@/components/shared/Loader/Loader';
 import { theme } from '@/theme';
 
 export const RootNavigator = () => {
@@ -16,10 +15,9 @@ export const RootNavigator = () => {
       <StatusBar
         barStyle={theme.dark.colors.primary}
         translucent
-        backgroundColor={'transparent'}
+        backgroundColor="transparent"
       />
       <AppNavigator />
-      <Loader />
     </NavigationContainer>
   );
 };

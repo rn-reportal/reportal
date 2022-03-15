@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { NavigationContext, UserContext } from '@/context';
+import { UserContext } from '@/context';
 import { RootNavigator } from '@/navigation';
-
 import { strings } from '@/localization';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const [user, setUser] = useState({
@@ -13,16 +15,8 @@ const App = () => {
     onboarding: true,
   });
 
-  const [navigation, setNavigation] = useState({
-    loading: false,
-  });
-
   const modifyUser = user => {
     setUser(user);
-  };
-
-  const modifyNavigation = navigation => {
-    setNavigation(navigation);
   };
 
   /* Force english as default language */
@@ -30,11 +24,11 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ user, modifyUser }}>
-      <NavigationContext.Provider value={{ navigation, modifyNavigation }}>
-        <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <QueryClientProvider client={queryClient}>
           <RootNavigator />
-        </GestureHandlerRootView>
-      </NavigationContext.Provider>
+        </QueryClientProvider>
+      </GestureHandlerRootView>
     </UserContext.Provider>
   );
 };
