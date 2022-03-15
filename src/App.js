@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { UserContext } from '@/context';
+import { NavigationContext, UserContext } from '@/context';
 import { RootNavigator } from '@/navigation';
+
 import { strings } from '@/localization';
 
 const App = () => {
@@ -12,8 +13,16 @@ const App = () => {
     onboarding: true,
   });
 
+  const [navigation, setNavigation] = useState({
+    loading: false,
+  });
+
   const modifyUser = user => {
     setUser(user);
+  };
+
+  const modifyNavigation = navigation => {
+    setNavigation(navigation);
   };
 
   /* Force english as default language */
@@ -21,9 +30,11 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ user, modifyUser }}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <RootNavigator />
-      </GestureHandlerRootView>
+      <NavigationContext.Provider value={{ navigation, modifyNavigation }}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <RootNavigator />
+        </GestureHandlerRootView>
+      </NavigationContext.Provider>
     </UserContext.Provider>
   );
 };

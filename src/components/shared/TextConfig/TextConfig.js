@@ -1,15 +1,16 @@
 import React from 'react';
 import { Text } from 'react-native';
 
+import Animated from 'react-native-reanimated';
 import PropTypes from 'prop-types';
 
 import { styles } from '@/components/shared/TextConfig/TextConfig.styles';
 
-export const TextConfig = ({ style, children, ...rest }) => {
+export const TextConfig = ({ style, animation, children, ...rest }) => {
   const substrings = children.split(/\s+/);
 
   return (
-    <Text style={[styles.root, style]} {...rest}>
+    <Animated.Text style={[styles.root, style]} {...animation} {...rest}>
       {substrings.map((substring, index) => {
         if (substring.startsWith('**')) {
           return (
@@ -33,7 +34,7 @@ export const TextConfig = ({ style, children, ...rest }) => {
           return `${substring} `;
         }
       })}
-    </Text>
+    </Animated.Text>
   );
 };
 
@@ -42,5 +43,6 @@ TextConfig.propTypes = {
     PropTypes.object.isRequired,
     PropTypes.array.isRequired,
   ]),
+  animation: PropTypes.object,
   children: PropTypes.string.isRequired,
 };

@@ -1,7 +1,8 @@
-import { StatusBar, ImageBackground, View } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 import React from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { FadeIn, FadeInLeft } from 'react-native-reanimated';
 
 import { OnboardingButton, Text } from '@/components';
 import { strings } from '@/localization';
@@ -11,20 +12,19 @@ import { styles } from '@/screens/Onboarding/Onboarding.styles';
 export const Onboarding = () => {
   return (
     <>
-      <StatusBar
-        barStyle={theme.dark.colors.primary}
-        translucent
-        backgroundColor={'transparent'}
-      />
       <SafeAreaView style={styles.root}>
         <ImageBackground
           source={require('../../assets/images/onboarding_bg.jpg')}
           style={styles.root__backgroundImage}>
           <View style={styles.root__contentWrapper}>
-            <Text style={styles.root__tagline}>
+            <Text
+              style={styles.root__tagline}
+              animation={{ entering: FadeIn.duration(500) }}>
               {strings.onboarding.tagline}
             </Text>
-            <Text style={[styles.root__greet, typography.text]}>
+            <Text
+              style={[styles.root__greet, typography.text]}
+              animation={{ entering: FadeInLeft.delay(500).duration(500) }}>
               {strings.onboarding.greet}
             </Text>
             <OnboardingButton />

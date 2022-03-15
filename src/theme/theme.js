@@ -4,9 +4,10 @@ export const theme = {
   light: {
     ...DefaultTheme,
     colors: {
-      // @todo: add light theme palette
-      primary: '#FEFEFC',
+      ...DefaultTheme.colors,
+      primary: '#EDF4FF',
       secondary: '#1A222F',
+      background: '#EDF4FF',
       text: '#BBBBBB',
     },
   },
@@ -15,7 +16,8 @@ export const theme = {
     colors: {
       ...DarkTheme.colors,
       primary: '#1A222F',
-      secondary: '#FEFEFC',
+      secondary: '#EDF4FF',
+      background: '#1A222F',
       text: '#BBBBBB',
     },
   },

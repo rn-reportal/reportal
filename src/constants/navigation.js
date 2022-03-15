@@ -3,7 +3,6 @@ export const NAVIGATION = {
     screen: 'Onboarding',
   },
   home: {
-    tab: 'HomeTab',
     screen: 'Home',
   },
   login: {

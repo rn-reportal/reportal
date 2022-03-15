@@ -1,22 +1,25 @@
-import { useColorScheme } from 'react-native';
-import React, { useContext } from 'react';
+import { useColorScheme, StatusBar } from 'react-native';
+import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import { UserContext } from '@/context';
-import { OnboardingNavigator, AppNavigator } from '@/navigation';
+import { AppNavigator } from '@/navigation';
+import { Loader } from '@/components/shared/Loader/Loader';
 import { theme } from '@/theme';
 
 export const RootNavigator = () => {
   const scheme = useColorScheme();
 
-  const {
-    user: { onboarding },
-  } = useContext(UserContext);
-
+  /* RootNavigator exists so we can e.g. have isUserLoggedIdn ? <AppNavigator/> : <LoginNavigator/> */
   return (
-    <NavigationContainer theme={theme['dark']}>
-      {onboarding ? <OnboardingNavigator /> : <AppNavigator />}
+    <NavigationContainer theme={theme.dark}>
+      <StatusBar
+        barStyle={theme.dark.colors.primary}
+        translucent
+        backgroundColor={'transparent'}
+      />
+      <AppNavigator />
+      <Loader />
     </NavigationContainer>
   );
 };
