@@ -5,12 +5,15 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-Light',
   },
   root__bold: {
-    fontFamily: 'Poppins-ExtraBold',
+    fontFamily: 'Poppins-Bold',
   },
   root__italic: {
     fontStyle: 'italic',
   },
   root__underline: {
     textDecorationLine: 'underline',
+  },
+  root__strikethrough: {
+    textDecorationLine: 'line-through',
   },
 });

@@ -8,7 +8,7 @@ export const theme = {
       primary: '#EDF4FF',
       secondary: '#1A222F',
       background: '#EDF4FF',
-      text: '#BBBBBB',
+      text: '#BFBFBF',
     },
   },
   dark: {
@@ -18,7 +18,7 @@ export const theme = {
       primary: '#1A222F',
       secondary: '#EDF4FF',
       background: '#1A222F',
-      text: '#BBBBBB',
+      text: '#BFBFBF',
     },
   },
 };

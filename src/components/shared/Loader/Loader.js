@@ -6,40 +6,40 @@ import LottieView from 'lottie-react-native';
 import { bool } from 'prop-types';
 
 import { styles } from '@/components/shared/Loader/Loader.styles';
-import { any } from 'prop-types';
 
-export const Loader = ({ loading, error }) => {
+export const Loader = ({ isLoading, isFetching }) => {
   const { colors } = useTheme();
 
-  if (!loading || error) {
+  if (isLoading || isFetching) {
+    return (
+      <Animated.View
+        entering={FadeInUp.duration(500)}
+        exiting={FadeOutUp.duration(500)}
+        style={styles.root}>
+        <LottieView
+          source={require('../../../assets/lottie/loader.json')}
+          loop
+          autoPlay
+          colorFilters={[
+            {
+              keypath: 'Shape Layer 2',
+              color: colors.secondary,
+            },
+            {
+              keypath: 'Shape Layer 1',
+              color: colors.secondary,
+            },
+          ]}
+        />
+      </Animated.View>
+    );
+  } else {
     return null;
   }
-
-  return (
-    <Animated.View
-      entering={FadeInUp.duration(500)}
-      exiting={FadeOutUp.duration(500)}
-      style={styles.root}>
-      <LottieView
-        source={require('../../../assets/lottie/loader.json')}
-        loop
-        autoPlay
-        colorFilters={[
-          {
-            keypath: 'Shape Layer 2',
-            color: colors.secondary,
-          },
-          {
-            keypath: 'Shape Layer 1',
-            color: colors.secondary,
-          },
-        ]}
-      />
-    </Animated.View>
-  );
 };
 
 Loader.propTypes = {
-  loading: bool,
+  isLoading: bool,
+  isFetching: bool,
   error: bool,
 };

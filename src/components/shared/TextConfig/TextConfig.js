@@ -9,6 +9,7 @@ import { styles } from '@/components/shared/TextConfig/TextConfig.styles';
 export const TextConfig = ({ style, animation, children, ...rest }) => {
   const substrings = children.split(/\s+/);
 
+  // @todo: refactor for nesting cases, e.g. italic inside bold
   return (
     <Animated.Text style={[styles.root, style]} {...animation} {...rest}>
       {substrings.map((substring, index) => {
@@ -28,6 +29,12 @@ export const TextConfig = ({ style, animation, children, ...rest }) => {
           return (
             <Text style={styles.root__underline} {...rest} key={index}>
               {substring.split('__')[1]}{' '}
+            </Text>
+          );
+        } else if (substring.startsWith('~~')) {
+          return (
+            <Text style={styles.root__strikethrough} {...rest} key={index}>
+              {substring.split('~~')[1]}{' '}
             </Text>
           );
         } else {

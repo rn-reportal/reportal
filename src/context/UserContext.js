@@ -1,6 +1,8 @@
 import { createContext } from 'react';
 
 export const UserContext = createContext({
-  lang: '',
-  onboarding: true,
+  common: {
+    lang: '',
+    isOnboarded: false,
+  },
 });

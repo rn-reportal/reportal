@@ -18,12 +18,20 @@ export const Onboarding = () => {
           style={styles.root__backgroundImage}>
           <View style={styles.root__contentWrapper}>
             <Text
-              style={styles.root__tagline}
+              style={[
+                styles.root__tagline,
+                { color: theme.dark.colors.secondary },
+                typography.hero,
+              ]}
               animation={{ entering: FadeIn.duration(1000) }}>
               {strings.onboarding.tagline}
             </Text>
             <Text
-              style={[styles.root__greet, typography.text]}
+              style={[
+                styles.root__greet,
+                { color: theme.dark.colors.text },
+                typography.text,
+              ]}
               animation={{ entering: FadeInLeft.delay(500).duration(500) }}>
               {strings.onboarding.greet}
             </Text>

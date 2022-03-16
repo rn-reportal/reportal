@@ -1,29 +1,31 @@
 import { TouchableNativeFeedback, View } from 'react-native';
 import React, { useContext } from 'react';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
 
 import { UserContext } from '@/context';
-import { NAVIGATION } from '@/constants';
 import { theme } from '@/theme';
 import { styles } from '@/components/OnboardingButton/OnboardingButton.styles';
 
 export const OnboardingButton = () => {
-  const { modifyUser, user } = useContext(UserContext);
-
-  const navigation = useNavigation();
+  const { user, setUser } = useContext(UserContext);
 
   const handleOnPress = () => {
-    modifyUser({
+    setUser({
       ...user,
-      onboarding: false,
+      common: {
+        ...user.common,
+        isOnboarded: true,
+      },
     });
 
-    navigation.navigate(NAVIGATION.home.screen, {
-      from: NAVIGATION.onboarding.screen,
-    });
+    try {
+      AsyncStorage.setItem('isOnboarded', JSON.stringify(true));
+    } catch (error) {
+      /* Do nothing */
+    }
   };
 
   return (

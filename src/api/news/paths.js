@@ -1,10 +1,10 @@
-import { API_NEWSAPI, API_NEWSAPI_KEY } from '@env';
+import { NEWSDATA_API, NEWSDATA_API_KEY } from '@env';
 
 export const api = {
-  topHeadlines: `${API_NEWSAPI}/top-headlines`,
+  news: `${NEWSDATA_API}/news`,
 };
 
-export const news = {
-  getTopHeadlines: (resultSize, category) =>
-    `${api.topHeadlines}?pageSize=${resultSize}&category=${category}&apiKey=${API_NEWSAPI_KEY}`,
+export const newsPaths = {
+  news: (country, category, language) =>
+    `${api.news}?category=${category}&language=${language}&apikey=${NEWSDATA_API_KEY}`,
 };
