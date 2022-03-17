@@ -14,8 +14,8 @@ export const AppNavigator = () => {
   changeNavigationBarColor('transparent', true);
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Drawer.Navigator screenOptions={{ headerShown: false, swipeEdgeWith: 0 }}>
       <Drawer.Screen name={NAVIGATION.home.screen} component={Home} />
-    </Stack.Navigator>
+    </Drawer.Navigator>
   );
 };

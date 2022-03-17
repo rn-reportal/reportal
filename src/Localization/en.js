@@ -6,7 +6,10 @@ export const en = {
     tagline: 'Latest **News** With Improved **Articles**',
     greet: 'Stay Up To Date With World News',
   },
-  home: {},
+  home: {
+    title: '**Explore Your Daily News**',
+    searchPlaceholder: 'Search News',
+  },
   login: {},
   profile: {},
 };

@@ -6,3 +6,5 @@ export const strings = new LocalizedStrings({
   en,
   'hr-HR': hr_HR,
 });
+
+export const DEFAULT_LANG = 'en';

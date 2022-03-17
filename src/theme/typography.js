@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 export const typography = StyleSheet.create({
   hero: {
     fontSize: 30,
-    lineHeight: 45,
+    fontFamily: 'Poppins-Light',
   },
   title: {
-    fontSize: 18,
+    fontSize: 22,
     lineHeight: 35,
   },
   label: {

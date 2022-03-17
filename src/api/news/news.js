@@ -5,15 +5,11 @@ import { newsPaths } from '@/api';
 export const CATEGORIES = {
   BUSINESS: 'business',
   ENTERTAINMENT: 'entertainment',
-  ENVIRONMENT: 'environment',
-  FOOD: 'food',
+  GENERAL: 'general',
   HEALTH: 'health',
-  POLITICS: 'politics',
   SCIENCE: 'science',
   SPORTS: 'sports',
   TECHNOLOGY: 'technology',
-  TOP: 'top',
-  WORLD: 'world',
 };
 
 export const LANGUAGES = {
@@ -21,6 +17,10 @@ export const LANGUAGES = {
   CROATIAN: 'hr',
 };
 
-export const getNews = (country, category, language) => {
-  return axios(newsPaths.news(country, category, language));
+export const getTopHeadlines = (country, category, language, query) => {
+  return axios(newsPaths.topHeadlines(country, category, language, query));
+};
+
+export const searchNews = (country, category, query) => {
+  return axios(newsPaths.everything(country, category, query));
 };

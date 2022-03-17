@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { DEFAULT_LANG } from '@/constants';
+import { DEFAULT_LANG } from '@/localization';
 
 export const getDeviceLanguageFromStorage = async () => {
   try {

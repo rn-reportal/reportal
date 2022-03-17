@@ -1,49 +1,103 @@
-import { Text, View } from 'react-native';
-import React from 'react';
+import { View } from 'react-native';
+import React, { useState } from 'react';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery } from 'react-query';
+import { useTheme } from '@react-navigation/native';
 
-import { Loader } from '@/components/shared/Loader/Loader';
-import { getNews, CATEGORIES, LANGUAGES } from '@/api';
+import {
+  Header,
+  Input,
+  TopHeadlinesCarousel,
+  Loader,
+  Text,
+} from '@/components';
+import { getTopHeadlines, searchNews, CATEGORIES, LANGUAGES } from '@/api';
 import { useRefreshOnScreenFocus } from '@/hooks';
 import { strings } from '@/localization';
+import { typography } from '@/theme';
 import { styles } from '@/screens/Home/Home.styles';
 
 export const Home = () => {
-  const { isLoading, isFetching, error, data, refetch } = useQuery(
-    'news',
-    () => getNews(null, CATEGORIES.TOP, LANGUAGES.ENGLISH),
-    { retry: 3 },
-  );
-
-  useRefreshOnScreenFocus(refetch);
+  const [query, setQuery] = useState('');
 
   const {
-    results: {
-      title,
-      link,
-      source_id,
-      keywords,
-      creator,
-      image_url,
-      video_url,
-      description,
-      pubDate,
-      content,
-      country,
-      category,
-      language,
-    } = {},
-    status,
-    totalResults,
-  } = data?.data || {};
-  console.log(data?.data);
+    isLoading: topHeadlinesIsLoading,
+    isFetching: topHeadlinesIsFetching,
+    error: topHeadlinesError,
+    data: topHeadlines,
+    refetch: topHeadlinesRefetch,
+  } = useQuery(
+    'topHeadlines',
+    () => getTopHeadlines(null, CATEGORIES.GENERAL, LANGUAGES.ENGLISH, null),
+    {
+      retry: 3,
+    },
+  );
+
+  const {
+    isLoading: searchNewsIsLoading,
+    isFetching: searchNewsIsFetching,
+    error: searchNewsError,
+    data: searchNews,
+    refetch: searchNewsRefetch,
+  } = useQuery(
+    'searchNews',
+    () => searchNews(null, null, LANGUAGES.ENGLISH, query),
+    {
+      retry: 3,
+      enabled: false,
+    },
+  );
+
+  useRefreshOnScreenFocus(topHeadlinesRefetch);
+
+  const { colors } = useTheme();
+
+  const handleSearchChange = event => {
+    event.persist();
+    const { text } = event.nativeEvent;
+    setQuery(text);
+  };
+
+  const handleOnSearchSubmit = event => {
+    event.persist();
+    const { text } = event.nativeEvent;
+    const trimmedQuery = text.trim();
+
+    // @todo: ADD FORMIK !!!
+    if (trimmedQuery) {
+      searchNewsRefetch(trimmedQuery);
+    }
+  };
+
   return (
     <>
-      <View style={styles.root}>
-        <Text style={styles.home}>{strings.home.message}</Text>
-      </View>
-      <Loader isLoading={isLoading} isFetching={isFetching} />
+      <SafeAreaView style={styles.root}>
+        <Header />
+        <Text
+          style={[
+            styles.root__title,
+            typography.title,
+            { color: colors.secondary },
+          ]}>
+          {strings.home.title}
+        </Text>
+        <View style={styles.root__searchWrapper}>
+          <Input
+            handleOnChange={handleSearchChange}
+            handleOnSubmit={handleOnSearchSubmit}
+            autoComplete="off"
+            defaultValue={query}
+            placeholder={strings.home.searchPlaceholder}
+            textContentType="none"
+            iconName="search"
+            returnKeyType="search"
+          />
+        </View>
+        <TopHeadlinesCarousel news={topHeadlines?.data?.articles || []} />
+      </SafeAreaView>
+      <Loader isLoading={topHeadlinesIsLoading || topHeadlinesIsFetching} />
     </>
   );
 };

@@ -6,7 +6,10 @@ export const hr_HR = {
     greet: 'Najnovije **vijesti** poboljšanih **članaka**',
     tagline: 'Ostanite u toku sa svjetskim vijestima',
   },
-  home: {},
+  home: {
+    title: '**Istražite svoje dnevne vijesti**',
+    searchPlaceholder: 'Pretražite vijesti',
+  },
   login: {},
   profile: {},
 };

@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { typography } from '@/theme';
+
 export const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -21,6 +23,7 @@ export const styles = StyleSheet.create({
   root__tagline: {
     textAlign: 'center',
     marginBottom: 25,
+    ...typography.hero,
   },
   root__greet: {
     textAlign: 'center',
