@@ -34,10 +34,7 @@ export const OnboardingButton = () => {
       entering={FadeInDown.delay(1000).springify()}>
       <TouchableNativeFeedback
         onPress={handleOnPress}
-        background={TouchableNativeFeedback.Ripple(
-          theme.dark.colors.primary,
-          true,
-        )}>
+        background={TouchableNativeFeedback.Ripple(theme.dark.colors.primary)}>
         <View style={styles.root__iconWrapper}>
           <Icon name="chevron-right" style={styles.root__icon} />
         </View>

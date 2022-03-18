@@ -5,10 +5,11 @@ import Animated from 'react-native-reanimated';
 import PropTypes from 'prop-types';
 
 import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlinesCarousel.styles';
+import { TopHeadline } from '@/components';
 
 const { width } = Dimensions.get('window');
 
-const ITEM_SIZE = width * 0.7;
+const ITEM_SIZE = width * 0.72;
 const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 
 export const TopHeadlinesCarousel = ({ news }) => {
@@ -49,13 +50,10 @@ export const TopHeadlinesCarousel = ({ news }) => {
           <View style={{ width: ITEM_SIZE }}>
             <Animated.View
               style={[styles.root__animatedItem, { transform: [{ scale }] }]}>
-              <Image
-                source={
-                  item.urlToImage
-                    ? { uri: item.urlToImage }
-                    : require('../../assets/images/fallback.jpg')
-                }
-                style={[styles.root__itemImage, { height: ITEM_SIZE / 1.4 }]}
+              <TopHeadline
+                data={item}
+                src={item.urlToImage}
+                height={ITEM_SIZE / 1.4}
               />
             </Animated.View>
           </View>

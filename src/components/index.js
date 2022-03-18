@@ -6,3 +6,5 @@ export { DrawerButton } from '@/components/shared/Header/DrawerButton/DrawerButt
 export { UserProfileButton } from '@/components/shared/Header/UserProfileButton/UserProfileButton';
 export { Input } from '@/components/shared/Input/Input';
 export { TopHeadlinesCarousel } from '@/components/TopHeadlinesCarousel/TopHeadlinesCarousel';
+export { TopHeadline } from '@/components/TopHeadlinesCarousel/TopHeadline/TopHeadline';
+export { BookmarkButton } from '@/components/TopHeadlinesCarousel/BookmarkButton/BookmarkButton';

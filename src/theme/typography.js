@@ -15,6 +15,14 @@ export const typography = StyleSheet.create({
   },
   text: {
     fontSize: 14,
-    lineHeight: 15,
+    lineHeight: 16,
+  },
+  mediumText: {
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  smallText: {
+    fontSize: 10,
+    lineHeight: 11,
   },
 });
