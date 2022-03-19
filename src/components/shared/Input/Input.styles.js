@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     paddingRight: 20,
     paddingLeft: 60,
     width: '100%',
-    height: 70,
+    height: 65,
     borderRadius: 10,
     position: 'relative',
     shadowColor: '#000',

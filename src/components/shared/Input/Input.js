@@ -70,7 +70,7 @@ export const Input = ({
 };
 
 Input.propTypes = {
-  handleOnChange: PropTypes.func,
+  handleOnChange: PropTypes.func.isRequired,
   handleOnSubmit: PropTypes.func,
   placeholder: PropTypes.string,
   autoComplete: PropTypes.oneOf([
@@ -113,7 +113,7 @@ Input.propTypes = {
     'off',
   ]),
   autoCorrect: PropTypes.bool,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.string.isRequired,
   textContentType: PropTypes.oneOf([
     'none',
     'URL',

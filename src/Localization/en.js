@@ -1,6 +1,7 @@
 export const en = {
   common: {
     loading: 'Loading',
+    offline: 'No Internet Connection',
   },
   onboarding: {
     tagline: 'Latest **News** With Improved **Articles**',

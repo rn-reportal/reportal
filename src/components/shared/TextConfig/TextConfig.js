@@ -78,10 +78,7 @@ export const TextConfig = ({ style, animation, children, ...rest }) => {
 };
 
 TextConfig.propTypes = {
-  style: PropTypes.oneOfType([
-    PropTypes.object.isRequired,
-    PropTypes.array.isRequired,
-  ]),
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   animation: PropTypes.object,
   children: PropTypes.string.isRequired,
 };

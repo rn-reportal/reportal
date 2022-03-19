@@ -12,6 +12,7 @@ import {
   Loader,
   Text,
   CategoriesSlider,
+  OfflineNotice,
 } from '@/components';
 import { getTopHeadlines, searchNews, CATEGORIES, LANGUAGES } from '@/api';
 import { useRefreshOnScreenFocus } from '@/hooks';
@@ -33,10 +34,11 @@ export const Home = () => {
     data: topHeadlines,
     refetch: topHeadlinesRefetch,
   } = useQuery(
-    'topHeadlines',
+    ['topHeadlines'],
     () => getTopHeadlines(null, CATEGORIES.GENERAL, LANGUAGES.ENGLISH, null),
     {
       retry: 3,
+      networkMode: 'online',
     },
   );
 
@@ -47,7 +49,7 @@ export const Home = () => {
     data: searchNews,
     refetch: searchNewsRefetch,
   } = useQuery(
-    'searchNews',
+    ['searchNews'],
     () => searchNews(null, null, LANGUAGES.ENGLISH, query),
     {
       retry: 3,
@@ -62,7 +64,7 @@ export const Home = () => {
     data: categoryNews,
     refetch: categoryNewsRefetch,
   } = useQuery(
-    'categoryNews',
+    ['categoryNews'],
     () => getTopHeadlines(null, activeCategory, LANGUAGES.ENGLISH, query),
     {
       retry: 3,
@@ -94,9 +96,14 @@ export const Home = () => {
     categoryNewsRefetch();
   };
 
+  console.log(topHeadlinesIsLoading);
+  console.log(topHeadlinesIsFetching);
+  console.log(topHeadlinesError);
+
   return (
     <>
       <SafeAreaView style={styles.root}>
+        <OfflineNotice />
         <Header />
         <Text
           style={[

@@ -5,11 +5,12 @@ export const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: '#EDF4FF',
+      primary: '#FFF',
       secondary: '#1A222F',
-      background: '#EDF4FF',
+      background: '#FFF',
       text: '#BFBFBF',
       inactive: '#EFEFEF',
+      error: '#E83A14',
     },
   },
   dark: {
@@ -17,10 +18,11 @@ export const theme = {
     colors: {
       ...DarkTheme.colors,
       primary: '#1A222F',
-      secondary: '#EDF4FF',
+      secondary: '#FFF',
       background: '#1A222F',
       text: '#BFBFBF',
       inactive: '#EFEFEF',
+      error: '#E83A14',
     },
   },
 };

@@ -39,5 +39,5 @@ export const Loader = ({ isLoading }) => {
 };
 
 Loader.propTypes = {
-  isLoading: bool,
+  isLoading: bool.isRequired,
 };

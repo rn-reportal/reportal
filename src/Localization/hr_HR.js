@@ -1,6 +1,7 @@
 export const hr_HR = {
   common: {
     loading: 'Učitavanje',
+    offline: 'Nema internetske veze',
   },
   onboarding: {
     greet: 'Najnovije **vijesti** poboljšanih **članaka**',

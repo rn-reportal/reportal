@@ -10,7 +10,6 @@ import NetInfo from '@react-native-community/netinfo';
 import useAppState from 'react-native-appstate-hook';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import en from 'javascript-time-ago/locale/en.json';
 
 import { UserContext } from '@/context';
 import { RootNavigator } from '@/navigation';

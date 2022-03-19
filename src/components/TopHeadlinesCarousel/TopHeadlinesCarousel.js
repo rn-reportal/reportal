@@ -64,5 +64,5 @@ export const TopHeadlinesCarousel = ({ news }) => {
 };
 
 TopHeadlinesCarousel.propTypes = {
-  news: PropTypes.array,
+  news: PropTypes.array.isRequired,
 };

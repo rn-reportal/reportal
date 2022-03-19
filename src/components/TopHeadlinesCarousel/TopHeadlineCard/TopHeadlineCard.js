@@ -49,7 +49,7 @@ export const TopHeadlineCard = ({ data, source, height }) => {
 };
 
 TopHeadlineCard.propTypes = {
-  data: PropTypes.object,
-  source: PropTypes.string,
-  height: PropTypes.number,
+  data: PropTypes.object.isRequired,
+  source: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
 };

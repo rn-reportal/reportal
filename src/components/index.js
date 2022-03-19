@@ -11,3 +11,4 @@ export { BookmarkButton } from '@/components/TopHeadlinesCarousel/BookmarkButton
 export { ImageLoader } from '@/components/shared/ImageLoader/ImageLoader';
 export { CategoriesSlider } from '@/components/CategoriesSlider/CategoriesSlider';
 export { CategoryButton } from '@/components/CategoriesSlider/CategoryButton/CategoryButton';
+export { OfflineNotice } from '@/components/OfflineNotice/OfflineNotice';

@@ -27,5 +27,5 @@ export const BookmarkButton = ({ onPress }) => {
 };
 
 BookmarkButton.propTypes = {
-  onPress: PropTypes.func,
+  onPress: PropTypes.func.isRequired,
 };
