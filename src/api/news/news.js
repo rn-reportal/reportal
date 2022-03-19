@@ -3,9 +3,9 @@ import axios from 'axios';
 import { newsPaths } from '@/api';
 
 export const CATEGORIES = {
+  GENERAL: 'general',
   BUSINESS: 'business',
   ENTERTAINMENT: 'entertainment',
-  GENERAL: 'general',
   HEALTH: 'health',
   SCIENCE: 'science',
   SPORTS: 'sports',

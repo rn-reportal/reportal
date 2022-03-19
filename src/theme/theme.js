@@ -9,6 +9,7 @@ export const theme = {
       secondary: '#1A222F',
       background: '#EDF4FF',
       text: '#BFBFBF',
+      inactive: '#EFEFEF',
     },
   },
   dark: {
@@ -19,6 +20,7 @@ export const theme = {
       secondary: '#EDF4FF',
       background: '#1A222F',
       text: '#BFBFBF',
+      inactive: '#EFEFEF',
     },
   },
 };

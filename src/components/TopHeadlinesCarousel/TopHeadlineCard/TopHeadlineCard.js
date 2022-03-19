@@ -1,14 +1,14 @@
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
 
 import { FadeIn } from 'react-native-reanimated';
 import TimeAgo from 'javascript-time-ago';
 import PropTypes from 'prop-types';
 
-import { Text, BookmarkButton } from '@/components';
-import { styles } from '@/components/TopHeadlinesCarousel/TopHeadline/TopHeadline.styles';
+import { Text, BookmarkButton, ImageLoader } from '@/components';
+import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlineCard/TopHeadlineCard.styles';
 
-export const TopHeadline = ({ data, src, height }) => {
+export const TopHeadlineCard = ({ data, source, height }) => {
   const timeAgo = new TimeAgo('en-US');
 
   const publishedAt = timeAgo.format(
@@ -22,10 +22,9 @@ export const TopHeadline = ({ data, src, height }) => {
 
   return (
     <View style={styles.root}>
-      <Image
-        source={
-          src ? { uri: src } : require('../../../assets/images/fallback.jpg')
-        }
+      <ImageLoader
+        source={source}
+        fallback={require('../../../assets/images/fallback.jpg')}
         style={[styles.root__image, { height: height }]}
       />
       <View style={styles.root__header}>
@@ -39,7 +38,7 @@ export const TopHeadline = ({ data, src, height }) => {
       <View style={styles.root__footer}>
         <Text
           style={styles.root__title}
-          animation={{ entering: FadeIn.delay(1000) }}
+          animation={{ entering: FadeIn.delay(500) }}
           numberOfLines={2}
           multiline>
           {data.title}
@@ -49,8 +48,8 @@ export const TopHeadline = ({ data, src, height }) => {
   );
 };
 
-TopHeadline.propTypes = {
+TopHeadlineCard.propTypes = {
   data: PropTypes.object,
-  src: PropTypes.string,
+  source: PropTypes.string,
   height: PropTypes.number,
 };

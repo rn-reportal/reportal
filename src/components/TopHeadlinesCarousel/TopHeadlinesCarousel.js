@@ -1,11 +1,11 @@
-import { View, Dimensions, Image } from 'react-native';
-import React, { useRef, useState } from 'react';
+import { View, Dimensions } from 'react-native';
+import React, { useRef } from 'react';
 
 import Animated from 'react-native-reanimated';
 import PropTypes from 'prop-types';
 
+import { TopHeadlineCard } from '@/components';
 import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlinesCarousel.styles';
-import { TopHeadline } from '@/components';
 
 const { width } = Dimensions.get('window');
 
@@ -21,10 +21,10 @@ export const TopHeadlinesCarousel = ({ news }) => {
       data={[{ url: 'left-spacer' }, ...news, { url: 'right-spacer' }]}
       keyExtractor={item => item.url}
       horizontal
-      contentContainerStyle={styles.root}
+      contentContainerStyle={[styles.root, { height: (ITEM_SIZE / 1.4) * 1.2 }]}
       snapToInterval={ITEM_SIZE}
       pagingEnabled
-      decelerationRate={0}
+      decelerationRate="fast"
       bounces={false}
       scrollEventThrottle={16}
       onScroll={Animated.event(
@@ -50,9 +50,9 @@ export const TopHeadlinesCarousel = ({ news }) => {
           <View style={{ width: ITEM_SIZE }}>
             <Animated.View
               style={[styles.root__animatedItem, { transform: [{ scale }] }]}>
-              <TopHeadline
+              <TopHeadlineCard
                 data={item}
-                src={item.urlToImage}
+                source={item.urlToImage}
                 height={ITEM_SIZE / 1.4}
               />
             </Animated.View>

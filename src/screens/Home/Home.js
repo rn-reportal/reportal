@@ -11,6 +11,7 @@ import {
   TopHeadlinesCarousel,
   Loader,
   Text,
+  CategoriesSlider,
 } from '@/components';
 import { getTopHeadlines, searchNews, CATEGORIES, LANGUAGES } from '@/api';
 import { useRefreshOnScreenFocus } from '@/hooks';
@@ -20,6 +21,10 @@ import { styles } from '@/screens/Home/Home.styles';
 
 export const Home = () => {
   const [query, setQuery] = useState('');
+
+  const [activeCategory, setActiveCategory] = useState(CATEGORIES.GENERAL);
+
+  const { colors } = useTheme();
 
   const {
     isLoading: topHeadlinesIsLoading,
@@ -50,9 +55,22 @@ export const Home = () => {
     },
   );
 
-  useRefreshOnScreenFocus(topHeadlinesRefetch);
+  const {
+    isLoading: categoryNewsIsLoading,
+    isFetching: categoryNewsIsFetching,
+    error: categoryNewsError,
+    data: categoryNews,
+    refetch: categoryNewsRefetch,
+  } = useQuery(
+    'categoryNews',
+    () => getTopHeadlines(null, activeCategory, LANGUAGES.ENGLISH, query),
+    {
+      retry: 3,
+      enabled: false,
+    },
+  );
 
-  const { colors } = useTheme();
+  useRefreshOnScreenFocus(topHeadlinesRefetch);
 
   const handleSearchChange = event => {
     event.persist();
@@ -69,6 +87,11 @@ export const Home = () => {
     if (trimmedQuery) {
       searchNewsRefetch(trimmedQuery);
     }
+  };
+
+  const handleCategorySelection = category => {
+    setActiveCategory(category);
+    categoryNewsRefetch();
   };
 
   return (
@@ -96,6 +119,10 @@ export const Home = () => {
           />
         </View>
         <TopHeadlinesCarousel news={topHeadlines?.data?.articles || []} />
+        <CategoriesSlider
+          activeCategory={activeCategory}
+          setActiveCategory={handleCategorySelection}
+        />
       </SafeAreaView>
       <Loader isLoading={topHeadlinesIsLoading || topHeadlinesIsFetching} />
     </>

@@ -6,5 +6,8 @@ export { DrawerButton } from '@/components/shared/Header/DrawerButton/DrawerButt
 export { UserProfileButton } from '@/components/shared/Header/UserProfileButton/UserProfileButton';
 export { Input } from '@/components/shared/Input/Input';
 export { TopHeadlinesCarousel } from '@/components/TopHeadlinesCarousel/TopHeadlinesCarousel';
-export { TopHeadline } from '@/components/TopHeadlinesCarousel/TopHeadline/TopHeadline';
+export { TopHeadlineCard } from '@/components/TopHeadlinesCarousel/TopHeadlineCard/TopHeadlineCard';
 export { BookmarkButton } from '@/components/TopHeadlinesCarousel/BookmarkButton/BookmarkButton';
+export { ImageLoader } from '@/components/shared/ImageLoader/ImageLoader';
+export { CategoriesSlider } from '@/components/CategoriesSlider/CategoriesSlider';
+export { CategoryButton } from '@/components/CategoriesSlider/CategoryButton/CategoryButton';
