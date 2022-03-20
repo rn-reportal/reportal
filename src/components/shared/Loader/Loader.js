@@ -18,7 +18,7 @@ export const Loader = ({ isLoading }) => {
     <Animated.View
       entering={FadeInUp.duration(500)}
       exiting={FadeOutUp.duration(500)}
-      style={styles.root}>
+      style={[styles.root, { backgroundColor: colors.primary }]}>
       <LottieView
         source={require('../../../assets/lottie/loader.json')}
         loop

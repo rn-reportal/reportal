@@ -45,8 +45,12 @@ export const ImageLoader = ({ source, fallback, style, ...rest }) => {
 };
 
 ImageLoader.propTypes = {
-  source: PropTypes.object.isRequired,
+  source: PropTypes.string.isRequired,
   fallback: PropTypes.number.isRequired,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   rest: PropTypes.object,
+};
+
+ImageLoader.defaultProps = {
+  source: null,
 };

@@ -1,31 +1,48 @@
 import { ScrollView } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 
-import PropTypes from 'prop-types';
+import { useQuery } from 'react-query';
 
-import { CategoryButton } from '@/components';
-import { CATEGORIES } from '@/api';
+import { Category } from '@/components';
+import { CATEGORIES, getTopHeadlines, LANGUAGES } from '@/api';
 import { styles } from '@/components/CategoriesSlider/CategoriesSlider.styles';
 
-export const CategoriesSlider = ({ activeCategory, setActiveCategory }) => {
+export const CategoriesSlider = () => {
+  const [activeCategory, setActiveCategory] = useState(CATEGORIES.GENERAL);
+
+  const {
+    isLoading: categoryNewsIsLoading,
+    isFetching: categoryNewsIsFetching,
+    error: categoryNewsError,
+    data: categoryNews,
+    refetch: categoryNewsRefetch,
+  } = useQuery(
+    ['categoryNews'],
+    () => getTopHeadlines(null, activeCategory, LANGUAGES.ENGLISH, query),
+    {
+      retry: 3,
+      enabled: false,
+    },
+  );
+
+  const handleCategorySelection = category => {
+    setActiveCategory(category);
+    // categoryNewsRefetch();
+  };
+
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.root}>
       {Object.values(CATEGORIES).map((category, index) => (
-        <CategoryButton
+        <Category
           category={category}
           activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
+          setActiveCategory={handleCategorySelection}
           key={index}
         />
       ))}
     </ScrollView>
   );
-};
-
-CategoriesSlider.propTypes = {
-  activeCategory: PropTypes.string.isRequired,
-  setActiveCategory: PropTypes.func.isRequired,
 };

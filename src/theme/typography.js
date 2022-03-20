@@ -15,7 +15,7 @@ export const typography = StyleSheet.create({
   },
   text: {
     fontSize: 14,
-    lineHeight: 16,
+    lineHeight: 18,
   },
   mediumText: {
     fontSize: 12,

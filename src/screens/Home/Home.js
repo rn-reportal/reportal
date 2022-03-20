@@ -9,13 +9,11 @@ import {
   Header,
   Input,
   TopHeadlinesCarousel,
-  Loader,
   Text,
   CategoriesSlider,
   OfflineNotice,
 } from '@/components';
-import { getTopHeadlines, searchNews, CATEGORIES, LANGUAGES } from '@/api';
-import { useRefreshOnScreenFocus } from '@/hooks';
+import { LANGUAGES } from '@/api';
 import { strings } from '@/localization';
 import { typography } from '@/theme';
 import { styles } from '@/screens/Home/Home.styles';
@@ -23,24 +21,7 @@ import { styles } from '@/screens/Home/Home.styles';
 export const Home = () => {
   const [query, setQuery] = useState('');
 
-  const [activeCategory, setActiveCategory] = useState(CATEGORIES.GENERAL);
-
   const { colors } = useTheme();
-
-  const {
-    isLoading: topHeadlinesIsLoading,
-    isFetching: topHeadlinesIsFetching,
-    error: topHeadlinesError,
-    data: topHeadlines,
-    refetch: topHeadlinesRefetch,
-  } = useQuery(
-    ['topHeadlines'],
-    () => getTopHeadlines(null, CATEGORIES.GENERAL, LANGUAGES.ENGLISH, null),
-    {
-      retry: 3,
-      networkMode: 'online',
-    },
-  );
 
   const {
     isLoading: searchNewsIsLoading,
@@ -56,23 +37,6 @@ export const Home = () => {
       enabled: false,
     },
   );
-
-  const {
-    isLoading: categoryNewsIsLoading,
-    isFetching: categoryNewsIsFetching,
-    error: categoryNewsError,
-    data: categoryNews,
-    refetch: categoryNewsRefetch,
-  } = useQuery(
-    ['categoryNews'],
-    () => getTopHeadlines(null, activeCategory, LANGUAGES.ENGLISH, query),
-    {
-      retry: 3,
-      enabled: false,
-    },
-  );
-
-  useRefreshOnScreenFocus(topHeadlinesRefetch);
 
   const handleSearchChange = event => {
     event.persist();
@@ -90,15 +54,6 @@ export const Home = () => {
       searchNewsRefetch(trimmedQuery);
     }
   };
-
-  const handleCategorySelection = category => {
-    setActiveCategory(category);
-    categoryNewsRefetch();
-  };
-
-  console.log(topHeadlinesIsLoading);
-  console.log(topHeadlinesIsFetching);
-  console.log(topHeadlinesError);
 
   return (
     <>
@@ -125,13 +80,9 @@ export const Home = () => {
             returnKeyType="search"
           />
         </View>
-        <TopHeadlinesCarousel news={topHeadlines?.data?.articles || []} />
-        <CategoriesSlider
-          activeCategory={activeCategory}
-          setActiveCategory={handleCategorySelection}
-        />
+        <TopHeadlinesCarousel />
+        <CategoriesSlider />
       </SafeAreaView>
-      <Loader isLoading={topHeadlinesIsLoading || topHeadlinesIsFetching} />
     </>
   );
 };

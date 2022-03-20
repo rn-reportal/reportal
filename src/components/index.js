@@ -10,5 +10,5 @@ export { TopHeadlineCard } from '@/components/TopHeadlinesCarousel/TopHeadlineCa
 export { BookmarkButton } from '@/components/TopHeadlinesCarousel/BookmarkButton/BookmarkButton';
 export { ImageLoader } from '@/components/shared/ImageLoader/ImageLoader';
 export { CategoriesSlider } from '@/components/CategoriesSlider/CategoriesSlider';
-export { CategoryButton } from '@/components/CategoriesSlider/CategoryButton/CategoryButton';
+export { Category } from '@/components/CategoriesSlider/Category/Category';
 export { OfflineNotice } from '@/components/OfflineNotice/OfflineNotice';
