@@ -9,6 +9,9 @@ export { TopHeadlinesCarousel } from '@/components/TopHeadlinesCarousel/TopHeadl
 export { TopHeadlineCard } from '@/components/TopHeadlinesCarousel/TopHeadlineCard/TopHeadlineCard';
 export { BookmarkButton } from '@/components/TopHeadlinesCarousel/BookmarkButton/BookmarkButton';
 export { ImageLoader } from '@/components/shared/ImageLoader/ImageLoader';
-export { CategoriesSlider } from '@/components/CategoriesSlider/CategoriesSlider';
-export { Category } from '@/components/CategoriesSlider/Category/Category';
+export { CategoriesSection } from '@/components/CategoriesSection/CategoriesSection';
+export { CategoriesSlider } from '@/components/CategoriesSection/CategoriesSlider/CategoriesSlider';
+export { Category } from '@/components/CategoriesSection/Category/Category';
+export { CategoryNews } from '@/components/CategoriesSection/CategoryNews/CategoryNews';
 export { OfflineNotice } from '@/components/OfflineNotice/OfflineNotice';
+export { SearchBar } from '@/components/SearchBar/SearchBar';

@@ -11,29 +11,26 @@ import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlinesCarousel.s
 
 const { width } = Dimensions.get('window');
 
-const ITEM_SIZE = width * 0.72;
-const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
+const ITEM_WIDTH = width * 0.72;
+const ITEM_HEIGHT = ITEM_WIDTH / 1.4;
+/* FLATLIST_HEIGHT is needed because we are up-scaling current item and without it,
+it goes out of the height bounds of flatlist */
+const FLATLIST_HEIGHT = ITEM_HEIGHT * 1.2;
+const SPACER_ITEM_SIZE = (width - ITEM_WIDTH) / 2;
 
 export const TopHeadlinesCarousel = () => {
-  const {
-    isLoading: topHeadlinesIsLoading,
-    isFetching: topHeadlinesIsFetching,
-    isPaused: topHeadlinesIsPaused,
-    error: topHeadlinesError,
-    data: topHeadlines,
-    refetch: topHeadlinesRefetch,
-  } = useQuery(
+  const { isLoading, isFetching, isPaused, error, data, refetch } = useQuery(
     ['topHeadlines'],
-    () => getTopHeadlines(null, CATEGORIES.GENERAL, LANGUAGES.ENGLISH, null),
+    () => getTopHeadlines(null, CATEGORIES.GENERAL, 1, LANGUAGES.ENGLISH, null),
     {
       retry: 3,
       networkMode: 'online',
     },
   );
 
-  useRefreshOnScreenFocus(topHeadlinesRefetch);
+  useRefreshOnScreenFocus(refetch);
 
-  const data = topHeadlines?.data?.articles || [];
+  const topHeadlinesNews = data?.data?.articles || [];
 
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -41,14 +38,15 @@ export const TopHeadlinesCarousel = () => {
     <>
       <Animated.FlatList
         showsHorizontalScrollIndicator={false}
-        data={[{ url: 'left-spacer' }, ...data, { url: 'right-spacer' }]}
+        data={[
+          { url: 'left-spacer' },
+          ...topHeadlinesNews,
+          { url: 'right-spacer' },
+        ]}
         keyExtractor={item => item.url}
         horizontal
-        contentContainerStyle={[
-          styles.root,
-          { height: (ITEM_SIZE / 1.4) * 1.2 },
-        ]}
-        snapToInterval={ITEM_SIZE}
+        contentContainerStyle={[styles.root, { height: FLATLIST_HEIGHT }]}
+        snapToInterval={ITEM_WIDTH}
         pagingEnabled
         decelerationRate="fast"
         bounces={false}
@@ -64,34 +62,31 @@ export const TopHeadlinesCarousel = () => {
 
           const scale = scrollX.interpolate({
             inputRange: [
-              (index - 2) * ITEM_SIZE,
-              (index - 1) * ITEM_SIZE,
-              index * ITEM_SIZE,
+              (index - 2) * ITEM_WIDTH,
+              (index - 1) * ITEM_WIDTH,
+              index * ITEM_WIDTH,
             ],
             outputRange: [1, 1.2, 1],
             extrapolate: 'clamp',
           });
 
           return (
-            <View style={{ width: ITEM_SIZE }}>
-              <Animated.View
-                style={[styles.root__animatedItem, { transform: [{ scale }] }]}>
-                <TopHeadlineCard
-                  data={item}
-                  source={item.urlToImage}
-                  height={ITEM_SIZE / 1.4}
-                />
-              </Animated.View>
-            </View>
+            <Animated.View
+              style={[
+                styles.root__animatedItem,
+                { width: ITEM_WIDTH, transform: [{ scale }] },
+              ]}>
+              <TopHeadlineCard
+                data={item}
+                source={item.urlToImage}
+                width={ITEM_WIDTH}
+                height={ITEM_HEIGHT}
+              />
+            </Animated.View>
           );
         }}
       />
-      <Loader
-        isLoading={
-          (topHeadlinesIsLoading && !topHeadlinesIsPaused) ||
-          topHeadlinesIsFetching
-        }
-      />
+      <Loader isLoading={(isLoading && !isPaused) || isFetching} />
     </>
   );
 };

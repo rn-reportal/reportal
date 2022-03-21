@@ -1,14 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-import { typography } from '@/theme';
-
 export const styles = StyleSheet.create({
   root: {
-    paddingVertical: 25,
-  },
-  root__title: {
-    marginTop: 20,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 30,
     paddingHorizontal: 25,
-    ...typography.title,
   },
 });

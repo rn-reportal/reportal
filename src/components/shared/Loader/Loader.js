@@ -6,6 +6,7 @@ import LottieView from 'lottie-react-native';
 import { bool } from 'prop-types';
 
 import { styles } from '@/components/shared/Loader/Loader.styles';
+import { Portal } from 'react-native-paper';
 
 export const Loader = ({ isLoading }) => {
   const { colors } = useTheme();
@@ -15,26 +16,28 @@ export const Loader = ({ isLoading }) => {
   }
 
   return (
-    <Animated.View
-      entering={FadeInUp.duration(500)}
-      exiting={FadeOutUp.duration(500)}
-      style={[styles.root, { backgroundColor: colors.primary }]}>
-      <LottieView
-        source={require('../../../assets/lottie/loader.json')}
-        loop
-        autoPlay
-        colorFilters={[
-          {
-            keypath: 'Shape Layer 2',
-            color: colors.secondary,
-          },
-          {
-            keypath: 'Shape Layer 1',
-            color: colors.secondary,
-          },
-        ]}
-      />
-    </Animated.View>
+    <Portal>
+      <Animated.View
+        entering={FadeInUp.duration(500)}
+        exiting={FadeOutUp.duration(500)}
+        style={[styles.root, { backgroundColor: colors.primary }]}>
+        <LottieView
+          source={require('../../../assets/lottie/loader.json')}
+          loop
+          autoPlay
+          colorFilters={[
+            {
+              keypath: 'Shape Layer 2',
+              color: colors.secondary,
+            },
+            {
+              keypath: 'Shape Layer 1',
+              color: colors.secondary,
+            },
+          ]}
+        />
+      </Animated.View>
+    </Portal>
   );
 };
 

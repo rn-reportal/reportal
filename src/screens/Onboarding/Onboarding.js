@@ -14,7 +14,7 @@ export const Onboarding = () => {
     <>
       <SafeAreaView style={styles.root}>
         <ImageBackground
-          source={require('../../assets/images/onboarding_bg.jpg')}
+          source={require('../../assets/images/onboarding-bg.jpg')}
           style={styles.root__backgroundImage}>
           <View style={styles.root__contentWrapper}>
             <Text

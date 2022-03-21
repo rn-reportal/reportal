@@ -4,7 +4,9 @@ export const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+  },
+  root__image: {
+    resizeMode: 'cover',
   },
   root__loader: {
     position: 'absolute',

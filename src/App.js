@@ -10,6 +10,7 @@ import NetInfo from '@react-native-community/netinfo';
 import useAppState from 'react-native-appstate-hook';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Portal } from 'react-native-paper';
 
 import { UserContext } from '@/context';
 import { RootNavigator } from '@/navigation';
@@ -66,9 +67,11 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView style={{ flex: 1, position: 'relative' }}>
         <QueryClientProvider client={queryClient}>
-          <RootNavigator />
+          <Portal.Host>
+            <RootNavigator />
+          </Portal.Host>
         </QueryClientProvider>
       </GestureHandlerRootView>
     </UserContext.Provider>

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Text, BookmarkButton, ImageLoader } from '@/components';
 import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlineCard/TopHeadlineCard.styles';
 
-export const TopHeadlineCard = ({ data, source, height }) => {
+export const TopHeadlineCard = ({ data, source, width, height }) => {
   const timeAgo = new TimeAgo('en-US');
 
   const publishedAt = timeAgo.format(
@@ -24,7 +24,7 @@ export const TopHeadlineCard = ({ data, source, height }) => {
     <View style={styles.root}>
       <ImageLoader
         source={source}
-        fallback={require('../../../assets/images/fallback.jpg')}
+        fallback={require('../../../assets/images/top-headlines-fallback.jpg')}
         style={[styles.root__image, { height: height }]}
       />
       <View style={styles.root__header}>
@@ -39,8 +39,8 @@ export const TopHeadlineCard = ({ data, source, height }) => {
         <Text
           style={styles.root__title}
           animation={{ entering: FadeIn.delay(500) }}
-          numberOfLines={2}
-          multiline>
+          multiline
+          numberOfLines={2}>
           {data.title}
         </Text>
       </View>
@@ -50,6 +50,9 @@ export const TopHeadlineCard = ({ data, source, height }) => {
 
 TopHeadlineCard.propTypes = {
   data: PropTypes.object.isRequired,
-  source: PropTypes.string.isRequired,
+  source: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.oneOf([null]).isRequired,
+  ]),
   height: PropTypes.number.isRequired,
 };

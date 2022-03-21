@@ -3,16 +3,10 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
+    justifySelf: 'flex-start',
   },
   root__animatedItem: {
-    marginHorizontal: 15,
-    paddingHorizontal: 8,
+    paddingHorizontal: 22,
     alignItems: 'center',
-  },
-  root__itemImage: {
-    width: '100%',
-    resizeMode: 'cover',
-    borderRadius: 24,
-    margin: 0,
   },
 });

@@ -4,15 +4,13 @@ import { theme, typography } from '@/theme';
 
 export const styles = StyleSheet.create({
   root: {
-    width: '100%',
     position: 'relative',
-    alignItems: 'center',
+    borderRadius: 20,
+    width: '100%',
   },
   root__image: {
-    width: '100%',
-    resizeMode: 'cover',
     borderRadius: 20,
-    margin: 0,
+    width: '100%',
   },
   root__header: {
     position: 'absolute',

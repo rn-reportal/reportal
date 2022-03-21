@@ -17,8 +17,10 @@ export const LANGUAGES = {
   CROATIAN: 'hr',
 };
 
-export const getTopHeadlines = (country, category, language, query) => {
-  return axios(newsPaths.topHeadlines(country, category, language, query));
+export const getTopHeadlines = (country, category, page, language, query) => {
+  return axios(
+    newsPaths.topHeadlines(country, category, page, language, query),
+  );
 };
 
 export const searchNews = (country, category, query) => {

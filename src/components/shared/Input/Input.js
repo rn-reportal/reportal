@@ -35,7 +35,7 @@ export const Input = ({
   const isPassword = textContentType === 'password';
 
   /* Password icon is automatically handled by secureIcon state and textContentType='password'.
-  For all other icons, the prop iconName should be exactly like Feather icons names. */
+  For all other icons, the prop iconName should be exactly like Feather/MaterialIcons icons names. */
 
   return (
     <View style={styles.root}>
@@ -50,8 +50,8 @@ export const Input = ({
         style={[
           styles.root__input,
           { color: colors.secondary },
-          scheme === 'dark' && { backgroundColor: '#1d2736' },
-          scheme === 'light' && { backgroundColor: '#1d2736' },
+          scheme === 'dark' && { backgroundColor: '#1D2736' },
+          scheme === 'light' && { backgroundColor: '#1D2736' },
         ]}
         placeholder={placeholder}
         placeholderTextColor={colors.secondary}
@@ -145,6 +145,6 @@ Input.propTypes = {
     'oneTimeCode',
   ]),
   secureTextEntry: PropTypes.bool,
-  iconName: PropTypes.oneOf(['search']),
+  iconName: PropTypes.string,
   returnKeyType: PropTypes.oneOf(['done', 'go', 'next', 'search', 'send']),
 };
