@@ -21,7 +21,8 @@ const SPACER_ITEM_SIZE = (width - ITEM_WIDTH) / 2;
 export const TopHeadlinesCarousel = () => {
   const { isLoading, isFetching, isPaused, error, data, refetch } = useQuery(
     ['topHeadlines'],
-    () => getTopHeadlines(null, CATEGORIES.GENERAL, 1, LANGUAGES.ENGLISH, null),
+    () =>
+      getTopHeadlines(null, CATEGORIES.GENERAL, 1, 20, LANGUAGES.ENGLISH, null),
     {
       retry: 3,
       networkMode: 'online',
@@ -79,7 +80,6 @@ export const TopHeadlinesCarousel = () => {
               <TopHeadlineCard
                 data={item}
                 source={item.urlToImage}
-                width={ITEM_WIDTH}
                 height={ITEM_HEIGHT}
               />
             </Animated.View>

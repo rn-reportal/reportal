@@ -19,8 +19,10 @@ export const Home = () => {
   const { colors } = useTheme();
 
   return (
-    <SafeAreaView style={styles.root}>
-      <ScrollView>
+    <SafeAreaView style={[styles.root, { backgroundColor: colors.primary }]}>
+      <ScrollView
+        stickyHeaderIndices={[1]}
+        contentContainerStyle={{ backgroundColor: colors.primary }}>
         <OfflineNotice />
         <Header />
         <Text style={[styles.root__title, { color: colors.secondary }]}>

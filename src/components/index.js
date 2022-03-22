@@ -13,5 +13,7 @@ export { CategoriesSection } from '@/components/CategoriesSection/CategoriesSect
 export { CategoriesSlider } from '@/components/CategoriesSection/CategoriesSlider/CategoriesSlider';
 export { Category } from '@/components/CategoriesSection/Category/Category';
 export { CategoryNews } from '@/components/CategoriesSection/CategoryNews/CategoryNews';
+export { CategoryNewsSlider } from '@/components/CategoriesSection/CategoryNewsSlider/CategoryNewsSlider';
+export { CategoryNewsMetadata } from '@/components/CategoriesSection/CategoryNewsMetadata/CategoryNewsMetadata';
 export { OfflineNotice } from '@/components/OfflineNotice/OfflineNotice';
 export { SearchBar } from '@/components/SearchBar/SearchBar';

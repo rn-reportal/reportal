@@ -13,12 +13,14 @@ export const Category = ({ activeCategory, category, setActiveCategory }) => {
   const isActive = category === activeCategory;
 
   return (
-    <TouchableNativeFeedback onPress={() => setActiveCategory(category)}>
+    <TouchableNativeFeedback
+      onPress={() => setActiveCategory(category)}
+      style={styles.root}>
       <View style={styles.root}>
         <Text
           style={[
             styles.root__category,
-            isActive && styles['root__category--active'],
+            isActive && { color: colors.secondary, fontFamily: 'Poppins-Bold' },
           ]}>
           {category}
         </Text>

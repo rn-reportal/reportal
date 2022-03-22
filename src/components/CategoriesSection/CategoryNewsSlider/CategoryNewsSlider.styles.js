@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   root: {
-    marginHorizontal: 20,
+    alignItems: 'center',
+    width: '100%',
   },
 });

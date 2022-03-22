@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { Input } from '@/components';
+import { searchNews } from '@/api';
 import { strings } from '@/localization';
 import { styles } from '@/components/SearchBar/SearchBar.styles';
 
@@ -12,7 +13,7 @@ export const SearchBar = () => {
 
   const { isLoading, isFetching, error, data, refetch } = useQuery(
     ['searchNews'],
-    () => searchNews(null, null, LANGUAGES.ENGLISH, query),
+    () => searchNews(null, null, 1, 20, LANGUAGES.ENGLISH, query),
     {
       retry: 3,
       enabled: false,

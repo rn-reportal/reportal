@@ -1,23 +1,32 @@
 import { StyleSheet } from 'react-native';
 
-import { typography } from '@/theme';
+import { theme, typography } from '@/theme';
 
 export const styles = StyleSheet.create({
   root: {
     flexDirection: 'row',
-    marginBottom: 25,
+    marginBottom: 20,
     width: '100%',
   },
   root__image: {
     borderRadius: 20,
+    borderWidth: 0.25,
+    borderColor: theme.dark.colors.inactive,
   },
   root__dataWrapper: {
     paddingLeft: 20,
     flexShrink: 1,
+    justifyContent: 'space-around',
   },
   root__title: {
     fontFamily: 'Poppins-Medium',
     flexWrap: 'wrap',
     ...typography.text,
+  },
+  root__newsMetadataWrapper: {
+    width: '90%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

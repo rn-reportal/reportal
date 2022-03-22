@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import PropTypes from 'prop-types';
 import { useTheme } from '@react-navigation/native';
 
+import { theme } from '@/theme';
 import { styles } from '@/components/shared/Input/Input.styles';
 
 export const Input = ({
@@ -41,7 +42,7 @@ export const Input = ({
     <View style={styles.root}>
       {iconName && (
         <Icon
-          style={[styles.root__icon, { color: colors.secondary }]}
+          style={[styles.root__icon, { color: theme.dark.colors.secondary }]}
           name={isPassword ? secureIcon : iconName}
           onPress={isPassword ? handlePasswordVisibilityToggle : undefined}
         />
@@ -49,12 +50,10 @@ export const Input = ({
       <TextInput
         style={[
           styles.root__input,
-          { color: colors.secondary },
-          scheme === 'dark' && { backgroundColor: '#1D2736' },
-          scheme === 'light' && { backgroundColor: '#1D2736' },
+          { color: theme.dark.colors.secondary, backgroundColor: '#1D2736' },
         ]}
         placeholder={placeholder}
-        placeholderTextColor={colors.secondary}
+        placeholderTextColor={theme.dark.colors.secondary}
         autocapitalize="none"
         onChange={handleOnChange}
         autoComplete={autoComplete}

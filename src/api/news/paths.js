@@ -6,7 +6,7 @@ export const api = {
 };
 
 export const newsPaths = {
-  topHeadlines: (country, category, page, language, query) => {
+  topHeadlines: (country, category, page, pageSize, language, query) => {
     let path = `${api.topHeadlines}?apikey=${NEWSDATA_API_KEY}`;
 
     if (country) {
@@ -21,6 +21,10 @@ export const newsPaths = {
       path = `${path}&page=${page}`;
     }
 
+    if (pageSize) {
+      path = `${path}&pageSize=${pageSize}`;
+    }
+
     if (language) {
       path = `${path}&language=${language}`;
     }
@@ -31,7 +35,7 @@ export const newsPaths = {
 
     return path;
   },
-  everything: (country, category, page, language, query) => {
+  everything: (country, category, page, pageSize, language, query) => {
     let path = `${api.search}?apikey=${NEWSDATA_API_KEY}`;
 
     if (country) {
@@ -44,6 +48,10 @@ export const newsPaths = {
 
     if (page) {
       path = `${path}&page=${page}`;
+    }
+
+    if (pageSize) {
+      path = `${path}&pageSize=${pageSize}`;
     }
 
     if (language) {

@@ -1,7 +1,7 @@
 import { useColorScheme, StatusBar } from 'react-native';
 import React, { useContext } from 'react';
 
-import { NavigationContainer, useTheme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { AppNavigator } from '@/navigation';
 import { OnboardingNavigator } from '@/navigation/OnboardingNavigator';
@@ -17,12 +17,10 @@ export const RootNavigator = () => {
 
   const scheme = useColorScheme();
 
-  const { colors } = useTheme();
-
   return (
-    <NavigationContainer theme={theme.dark}>
+    <NavigationContainer theme={theme[scheme]}>
       <StatusBar
-        barStyle={colors.primary}
+        barStyle={scheme === 'light' ? 'dark-content' : 'light-content'}
         translucent
         backgroundColor="transparent"
       />

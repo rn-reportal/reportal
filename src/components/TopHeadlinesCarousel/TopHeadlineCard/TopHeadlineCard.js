@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Text, BookmarkButton, ImageLoader } from '@/components';
 import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlineCard/TopHeadlineCard.styles';
 
-export const TopHeadlineCard = ({ data, source, width, height }) => {
+export const TopHeadlineCard = ({ data, source, height }) => {
   const timeAgo = new TimeAgo('en-US');
 
   const publishedAt = timeAgo.format(
