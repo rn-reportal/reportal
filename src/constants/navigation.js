@@ -5,6 +5,9 @@ export const NAVIGATION = {
   home: {
     screen: 'Home',
   },
+  details: {
+    screen: 'News Details',
+  },
   login: {
     tab: 'LoginTab',
     screen: 'Login',

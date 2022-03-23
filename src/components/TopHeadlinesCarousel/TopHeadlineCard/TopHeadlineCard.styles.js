@@ -7,7 +7,9 @@ export const styles = StyleSheet.create({
     position: 'relative',
     borderRadius: 20,
     width: '100%',
+    overflow: 'hidden',
   },
+  root__contentWrapper: {},
   root__image: {
     borderRadius: 20,
     width: '100%',

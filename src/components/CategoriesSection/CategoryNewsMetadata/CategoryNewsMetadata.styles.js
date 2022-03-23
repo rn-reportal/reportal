@@ -7,12 +7,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   root__icon: {
-    fontSize: 20,
+    fontSize: 18,
     color: theme.dark.colors.inactive,
-    marginRight: 7,
+    marginRight: 5,
   },
   root__metadata: {
     color: theme.dark.colors.inactive,
-    ...typography.text,
+    ...typography.mediumText,
   },
 });

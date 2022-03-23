@@ -27,6 +27,7 @@ export const CategoryNews = ({ data, isLoading }) => {
         ]}
       />
       <View style={styles.root__dataWrapper}>
+        <Text style={styles.root__source}>{data?.source?.name}</Text>
         <Text
           style={[styles.root__title, { color: colors.secondary }]}
           multiline

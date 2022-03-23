@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     justifySelf: 'flex-start',
-    marginVertical: 30,
+    marginTop: 25,
+    marginBottom: 20,
   },
 });

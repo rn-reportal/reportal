@@ -16,7 +16,12 @@ export const styles = StyleSheet.create({
   root__dataWrapper: {
     paddingLeft: 20,
     flexShrink: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    paddingBottom: 2,
+  },
+  root__source: {
+    color: theme.dark.colors.inactive,
+    ...typography.mediumText,
   },
   root__title: {
     fontFamily: 'Poppins-Medium',

@@ -4,18 +4,12 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
 
-import {
-  Header,
-  TopHeadlinesCarousel,
-  Text,
-  OfflineNotice,
-  SearchBar,
-  CategoriesSection,
-} from '@/components';
-import { strings } from '@/localization';
+import { OfflineNotice } from '@/components';
 import { styles } from '@/screens/Home/Home.styles';
 
-export const Home = () => {
+export const NewsDetails = ({ route }) => {
+  const { data } = route.params;
+
   const { colors } = useTheme();
 
   return (
@@ -25,13 +19,6 @@ export const Home = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ backgroundColor: colors.primary }}>
         <OfflineNotice />
-        <Header />
-        <Text style={[styles.root__title, { color: colors.secondary }]}>
-          {strings.home.title}
-        </Text>
-        <SearchBar />
-        <TopHeadlinesCarousel />
-        <CategoriesSection />
       </ScrollView>
     </SafeAreaView>
   );

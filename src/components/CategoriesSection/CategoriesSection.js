@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 
 import { CategoriesSlider, CategoryNewsSlider, Loader } from '@/components';
 import { CATEGORIES, getTopHeadlines, LANGUAGES } from '@/api';
+import { useRefreshOnScreenFocus } from '@/hooks';
 import { styles } from '@/components/CategoriesSection/CategoriesSection.styles';
 
 export const CategoriesSection = () => {
@@ -33,6 +34,8 @@ export const CategoriesSection = () => {
       setActiveCategory(category);
     }
   };
+
+  useRefreshOnScreenFocus(refetch);
 
   useEffect(() => {
     if (isFirstMount.current) {

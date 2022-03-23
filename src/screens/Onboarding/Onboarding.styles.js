@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
   root: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 50,
   },
   root__backgroundImage: {
     flex: 1,
@@ -16,6 +15,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   root__contentWrapper: {
+    marginTop: 50,
     flex: 1,
     alignItems: 'center',
     padding: 30,

@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   root__activeBullet: {
     position: 'absolute',
     left: '50%',
-    bottom: 2.5,
+    bottom: 4,
     borderRadius: 5,
     height: 5,
     width: 5,
