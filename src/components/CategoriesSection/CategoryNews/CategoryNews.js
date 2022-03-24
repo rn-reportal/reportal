@@ -4,6 +4,7 @@ import React from 'react';
 import { useTheme } from '@react-navigation/native';
 
 import { ImageLoader, Text, CategoryNewsMetadata } from '@/components';
+import { getDateAndTimeFromPublished } from '@/util/time';
 import { styles } from '@/components/CategoriesSection/CategoryNews/CategoryNews.styles';
 
 const { width } = Dimensions.get('window');
@@ -13,9 +14,9 @@ const IMAGE_WIDTH = width / 3.5;
 export const CategoryNews = ({ data, isLoading }) => {
   const { colors } = useTheme();
 
-  const publishedAt = data.pubDate.split(/\s/);
-  const publishedAtDate = publishedAt[0];
-  const publishedAtTime = publishedAt[1].substr(0, 5);
+  const { publishedAtDate, publishedAtTime } = getDateAndTimeFromPublished(
+    data?.pubDate,
+  );
 
   return (
     <View style={styles.root}>

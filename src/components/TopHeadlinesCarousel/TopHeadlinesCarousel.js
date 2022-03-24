@@ -57,7 +57,7 @@ export const TopHeadlinesCarousel = () => {
         )}
         renderItem={({ item, index }) => {
           if (!item.title) {
-            return <View style={{ width: SPACER_ITEM_SIZE }} />;
+            return <View style={{ width: SPACER_ITEM_SIZE }} key={index} />;
           }
 
           const scale = scrollX.interpolate({
@@ -75,7 +75,8 @@ export const TopHeadlinesCarousel = () => {
               style={[
                 styles.root__animatedItem,
                 { width: ITEM_WIDTH, transform: [{ scale }] },
-              ]}>
+              ]}
+              key={index}>
               <TopHeadlineCard data={item} height={ITEM_HEIGHT} />
             </Animated.View>
           );

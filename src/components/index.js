@@ -18,3 +18,5 @@ export { CategoryNewsMetadata } from '@/components/CategoriesSection/CategoryNew
 export { OfflineNotice } from '@/components/OfflineNotice/OfflineNotice';
 export { SearchBar } from '@/components/SearchBar/SearchBar';
 export { DetailsModal } from '@/components/DetailsModal/DetailsModal';
+export { Chip } from '@/components/shared/Chip/Chip';
+export { Keywords } from '@/components/DetailsModal/Keywords/Keywords';
