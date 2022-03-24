@@ -8,7 +8,7 @@ import { strings } from '@/localization';
 import { styles } from '@/components/OfflineNotice/OfflineNotice.styles';
 
 export const OfflineNotice = () => {
-  const [isOffline, setIsOffline] = useState(true);
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
     const removeNetInfoSubscription = NetInfo.addEventListener(state => {

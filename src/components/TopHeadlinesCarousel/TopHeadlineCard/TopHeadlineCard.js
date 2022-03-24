@@ -9,15 +9,12 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, BookmarkButton, ImageLoader } from '@/components';
 import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlineCard/TopHeadlineCard.styles';
 
-export const TopHeadlineCard = ({ data, source, height }) => {
+export const TopHeadlineCard = ({ data, height }) => {
   const navigation = useNavigation();
 
   const timeAgo = new TimeAgo('en-US');
 
-  const publishedAt = timeAgo.format(
-    Date.parse(data.publishedAt),
-    'round-minute',
-  );
+  const publishedAt = timeAgo.format(Date.parse(data.pubDate), 'round-minute');
 
   const handleOnBookmarkPress = () => {
     /* do nothing for now */
@@ -32,7 +29,7 @@ export const TopHeadlineCard = ({ data, source, height }) => {
       <TouchableWithoutFeedback onPress={handleOnCardPress}>
         <View style={styles.root__contentWrapper} pointerEvents="box-only">
           <ImageLoader
-            source={source}
+            source={data.image_url}
             fallback={require('../../../assets/images/top-headlines-fallback.jpg')}
             style={[styles.root__image, { height: height }]}
           />
@@ -61,9 +58,5 @@ export const TopHeadlineCard = ({ data, source, height }) => {
 
 TopHeadlineCard.propTypes = {
   data: PropTypes.object.isRequired,
-  source: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.oneOf([null]).isRequired,
-  ]),
   height: PropTypes.number.isRequired,
 };

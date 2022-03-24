@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 
 import { TopHeadlineCard, Loader } from '@/components';
 import { useRefreshOnScreenFocus } from '@/hooks';
-import { CATEGORIES, getTopHeadlines, LANGUAGES } from '@/api';
+import { CATEGORIES, getLatestNews, LANGUAGES } from '@/api';
 import { styles } from '@/components/TopHeadlinesCarousel/TopHeadlinesCarousel.styles';
 
 const { width } = Dimensions.get('window');
@@ -21,19 +21,18 @@ const SPACER_ITEM_SIZE = (width - ITEM_WIDTH) / 2;
 export const TopHeadlinesCarousel = () => {
   const { isLoading, isFetching, isPaused, error, data, refetch } = useQuery(
     ['topHeadlines'],
-    () =>
-      getTopHeadlines(null, CATEGORIES.GENERAL, 1, 20, LANGUAGES.ENGLISH, null),
+    () => getLatestNews(null, CATEGORIES.TOP, null, LANGUAGES.ENGLISH, null),
     {
       retry: 3,
       networkMode: 'online',
     },
   );
 
-  useRefreshOnScreenFocus(refetch);
-
-  const topHeadlinesNews = data?.data?.articles || [];
+  const topHeadlinesNews = data?.data?.results || [];
 
   const scrollX = useRef(new Animated.Value(0)).current;
+
+  /* useRefreshOnScreenFocus(refetch); */
 
   return (
     <>
@@ -77,11 +76,7 @@ export const TopHeadlinesCarousel = () => {
                 styles.root__animatedItem,
                 { width: ITEM_WIDTH, transform: [{ scale }] },
               ]}>
-              <TopHeadlineCard
-                data={item}
-                source={item.urlToImage}
-                height={ITEM_HEIGHT}
-              />
+              <TopHeadlineCard data={item} height={ITEM_HEIGHT} />
             </Animated.View>
           );
         }}

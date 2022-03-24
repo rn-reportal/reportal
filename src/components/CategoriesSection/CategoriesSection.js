@@ -4,22 +4,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 
 import { CategoriesSlider, CategoryNewsSlider, Loader } from '@/components';
-import { CATEGORIES, getTopHeadlines, LANGUAGES } from '@/api';
+import { CATEGORIES, getLatestNews, LANGUAGES } from '@/api';
 import { useRefreshOnScreenFocus } from '@/hooks';
 import { styles } from '@/components/CategoriesSection/CategoriesSection.styles';
 
 export const CategoriesSection = () => {
-  const [activeCategory, setActiveCategory] = useState(CATEGORIES.GENERAL);
+  const [activeCategory, setActiveCategory] = useState(CATEGORIES.TOP);
   const isFirstMount = useRef(true);
 
   const { isLoading, isFetching, isPaused, error, data, refetch } = useQuery(
     ['categoryNews'],
     () =>
-      getTopHeadlines(
+      getLatestNews(
         null,
         activeCategory,
-        activeCategory === CATEGORIES.GENERAL ? 2 : 1,
-        10,
+        activeCategory === CATEGORIES.TOP ? 2 : 1,
         LANGUAGES.ENGLISH,
         null,
       ),
@@ -35,7 +34,7 @@ export const CategoriesSection = () => {
     }
   };
 
-  useRefreshOnScreenFocus(refetch);
+  /* useRefreshOnScreenFocus(refetch); */
 
   useEffect(() => {
     if (isFirstMount.current) {
@@ -56,7 +55,7 @@ export const CategoriesSection = () => {
           handleCategorySelection={handleCategorySelection}
         />
         <CategoryNewsSlider
-          categoryNews={data?.data?.articles || []}
+          categoryNews={data?.data?.results || []}
           isLoading={(isLoading && !isPaused) || isFetching}
         />
       </View>

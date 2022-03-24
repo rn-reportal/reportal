@@ -3,13 +3,17 @@ import axios from 'axios';
 import { newsPaths } from '@/api';
 
 export const CATEGORIES = {
-  GENERAL: 'general',
+  TOP: 'top',
   BUSINESS: 'business',
   ENTERTAINMENT: 'entertainment',
+  ENVIRONMENT: 'environment',
+  FOOD: 'food',
   HEALTH: 'health',
+  POLITICS: 'politics',
   SCIENCE: 'science',
   SPORTS: 'sports',
   TECHNOLOGY: 'technology',
+  WORLD: 'world',
 };
 
 export const LANGUAGES = {
@@ -17,19 +21,6 @@ export const LANGUAGES = {
   CROATIAN: 'hr',
 };
 
-export const getTopHeadlines = (
-  country,
-  category,
-  page,
-  pageSize,
-  language,
-  query,
-) => {
-  return axios(
-    newsPaths.topHeadlines(country, category, page, pageSize, language, query),
-  );
-};
-
-export const searchNews = (country, category, page, pageSize, query) => {
-  return axios(newsPaths.everything(country, category, page, pageSize, query));
+export const getLatestNews = (country, category, page, language, query) => {
+  return axios(newsPaths.latest(country, category, page, language, query));
 };

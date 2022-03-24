@@ -17,3 +17,4 @@ export { CategoryNewsSlider } from '@/components/CategoriesSection/CategoryNewsS
 export { CategoryNewsMetadata } from '@/components/CategoriesSection/CategoryNewsMetadata/CategoryNewsMetadata';
 export { OfflineNotice } from '@/components/OfflineNotice/OfflineNotice';
 export { SearchBar } from '@/components/SearchBar/SearchBar';
+export { DetailsModal } from '@/components/DetailsModal/DetailsModal';

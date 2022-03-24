@@ -1,25 +1,26 @@
-import { ScrollView } from 'react-native';
+import { Dimensions, StatusBar } from 'react-native';
 import React from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useTheme } from '@react-navigation/native';
 
-import { OfflineNotice } from '@/components';
-import { styles } from '@/screens/Home/Home.styles';
+import { DetailsModal, ImageLoader, OfflineNotice } from '@/components';
+
+const { width, height } = Dimensions.get('window');
+const IMAGE_HEIGHT = height / 2.75;
 
 export const NewsDetails = ({ route }) => {
   const { data } = route.params;
 
-  const { colors } = useTheme();
-
   return (
-    <SafeAreaView style={[styles.root, { backgroundColor: colors.primary }]}>
-      <ScrollView
-        stickyHeaderIndices={[1]}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ backgroundColor: colors.primary }}>
-        <OfflineNotice />
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <StatusBar barStyle="light-content" />
+      <ImageLoader
+        source={data.image_url}
+        fallback={require('../../assets/images/top-headlines-fallback.jpg')}
+        style={{ width: width, height: IMAGE_HEIGHT }}
+      />
+      <OfflineNotice />
+      <DetailsModal data={data} />
+    </>
   );
 };

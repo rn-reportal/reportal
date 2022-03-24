@@ -7,6 +7,10 @@ import PropTypes from 'prop-types';
 import { styles } from '@/components/shared/TextConfig/TextConfig.styles';
 
 export const TextConfig = ({ style, animation, children, ...rest }) => {
+  if (!children) {
+    return null;
+  }
+
   // @todo: refactor for nesting cases, e.g. italic inside bold
   const text = children.split(/\s/g).reduce((acc, curr) => {
     const previousVal = acc[acc.length - 1];

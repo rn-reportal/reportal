@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
     backgroundColor: theme.dark.colors.error,
     marginBottom: 15,
+    zIndex: 2,
   },
   root__noConnectionMessage: {
     color: theme.dark.colors.secondary,

@@ -13,13 +13,14 @@ const IMAGE_WIDTH = width / 3.5;
 export const CategoryNews = ({ data, isLoading }) => {
   const { colors } = useTheme();
 
-  const datePublishedAt = data.publishedAt?.split('T')[0];
-  const timePublishedAt = data.publishedAt?.split('T')[1]?.split(/:[0-9]*Z/)[0];
+  const publishedAt = data.pubDate.split(/\s/);
+  const publishedAtDate = publishedAt[0];
+  const publishedAtTime = publishedAt[1].substr(0, 5);
 
   return (
     <View style={styles.root}>
       <ImageLoader
-        source={data.urlToImage}
+        source={data.image_url}
         fallback={require('../../../assets/images/category-news-fallback.jpg')}
         style={[
           styles.root__image,
@@ -27,7 +28,7 @@ export const CategoryNews = ({ data, isLoading }) => {
         ]}
       />
       <View style={styles.root__dataWrapper}>
-        <Text style={styles.root__source}>{data?.source?.name}</Text>
+        <Text style={styles.root__source}>{data?.source_id}</Text>
         <Text
           style={[styles.root__title, { color: colors.secondary }]}
           multiline
@@ -36,10 +37,10 @@ export const CategoryNews = ({ data, isLoading }) => {
         </Text>
         <View style={styles.root__newsMetadataWrapper}>
           <CategoryNewsMetadata
-            metadata={datePublishedAt}
+            metadata={publishedAtDate}
             iconName="calendar"
           />
-          <CategoryNewsMetadata metadata={timePublishedAt} iconName="clock" />
+          <CategoryNewsMetadata metadata={publishedAtTime} iconName="clock" />
         </View>
       </View>
     </View>

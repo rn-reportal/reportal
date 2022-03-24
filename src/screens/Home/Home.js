@@ -19,20 +19,22 @@ export const Home = () => {
   const { colors } = useTheme();
 
   return (
-    <SafeAreaView style={[styles.root, { backgroundColor: colors.primary }]}>
-      <ScrollView
-        stickyHeaderIndices={[1]}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ backgroundColor: colors.primary }}>
+    <>
+      <SafeAreaView style={[styles.root, { backgroundColor: colors.primary }]}>
         <OfflineNotice />
-        <Header />
-        <Text style={[styles.root__title, { color: colors.secondary }]}>
-          {strings.home.title}
-        </Text>
-        <SearchBar />
-        <TopHeadlinesCarousel />
-        <CategoriesSection />
-      </ScrollView>
-    </SafeAreaView>
+        <ScrollView
+          stickyHeaderIndices={[0]}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ backgroundColor: colors.primary }}>
+          <Header />
+          <Text style={[styles.root__title, { color: colors.secondary }]}>
+            {strings.home.title}
+          </Text>
+          <SearchBar />
+          <TopHeadlinesCarousel />
+          <CategoriesSection />
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 };

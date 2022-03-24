@@ -25,7 +25,7 @@ export const ImageLoader = ({ source, fallback, style, ...rest }) => {
     <Animated.View
       onEntering={FadeIn.delay(100)}
       onExiting={FadeOut.delay(100)}
-      style={[styles.root]}>
+      style={styles.root}>
       <Image
         source={source ? { uri: source } : fallback}
         style={style}
